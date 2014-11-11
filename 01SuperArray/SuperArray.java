@@ -105,16 +105,14 @@ public class SuperArray{
 
     public Object get(int index){
 	if (index < 0 || index >= size()){
-	    System.out.println("Error");
-	    return null;
+	    throw IndexOutOfBoundsException();
 	}
 	return superArray[index];
     }
     
     public Object set(int index, Object e){
 	if (index < 0 || index >= size()){
-	    System.out.println("Error");
-	    return null;
+	    throw IndexOutOfBoundsException();
 	}
 	Object object = superArray[index];
 	superArray[index] = e;
@@ -123,8 +121,7 @@ public class SuperArray{
     
     public Object remove(int index){
       	if (index < 0 || index >= size()){
-	    System.out.println("Error");
-	    return null;
+	    throw IndexOutOfBoundsException();
 	}
 	Object[] newSuperArray = new Object[superArray.length - 1];
 	int counter = 0;
