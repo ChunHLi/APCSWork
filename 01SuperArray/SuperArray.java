@@ -4,40 +4,34 @@ public class SuperArray{
     
     public static void main(String[]args){
 	SuperArray A = new SuperArray();
+	System.out.println("\n");
+	A.add(1);
+	A.add(2);
+	A.add(3);
+	A.add(4);
+	A.add(5);
 	System.out.println(A.toString());
 	System.out.println(A.size());
-        A.add(5);
+	System.out.println("\n");
+	A.remove(0);
 	System.out.println(A.toString());
 	System.out.println(A.size());
-	A.add(20, "dragon");
+	System.out.println("\n");
+	A.add(6);
 	System.out.println(A.toString());
 	System.out.println(A.size());
-	A.resize(15);
+	System.out.println("\n");
+	A.add(0,"Banana");
 	System.out.println(A.toString());
 	System.out.println(A.size());
-	A.remove(10);
-	System.out.println(A.toString());
-	System.out.println(A.size());
-	A.resize(3);
-	System.out.println(A.toString());
-	System.out.println(A.size());
-	A.set(1,"banana");
-	System.out.println(A.toString());
-	System.out.println(A.size());
-	A.set(5,"Error");
-	A.get(5);
-	A.clear();
-	System.out.println(A.toString());
-	System.out.println(A.size());
+	System.out.println("\n");
+	System.out.println(A.get(0));
+	System.out.println(A.set(0, "Cherry"));
+	System.out.println(A.set(0, "Cherry"));
     }
 
     public SuperArray(){
-	this(10);
-    }
-
-    public SuperArray(int n){
-	superArray = new Object[n];
-	numElements = n;
+	superArray = new Object[0];
     }
 
     public String toString(){
@@ -45,6 +39,12 @@ public class SuperArray{
 	String superArrayString = "[";
 	while (counter < superArray.length){
 	    superArrayString += " ";
+	    while (counter < superArray.length && superArray[counter] == null){
+		counter += 1;
+	    }
+	    if (counter >= superArray.length){
+		break;
+	    }
 	    superArrayString += superArray[counter];
 	    counter += 1;    
 	}
@@ -59,7 +59,7 @@ public class SuperArray{
 	    counter += 1;
 	}
 	newSuperArray[counter] = e;
-	numElements = newSuperArray.length;
+	numElements += 1;
 	superArray = newSuperArray;
     }
 
@@ -80,7 +80,7 @@ public class SuperArray{
 	    newSuperArray[counter + 1] = superArray[counter];
 	    counter += 1;
 	}
-	numElements = newSuperArray.length;
+	numElements += 1;
 	superArray = newSuperArray;
     }
     
@@ -95,7 +95,7 @@ public class SuperArray{
 	    newSuperArray[counter] = superArray[counter];
 	    counter += 1;
 	}
-	numElements = newSuperArray.length;
+	numElements = newCapacity;
 	superArray = newSuperArray;
     }
 
@@ -105,14 +105,14 @@ public class SuperArray{
 
     public Object get(int index){
 	if (index < 0 || index >= size()){
-	    throw IndexOutOfBoundsException();
+	    throw new IndexOutOfBoundsException();
 	}
 	return superArray[index];
     }
     
     public Object set(int index, Object e){
 	if (index < 0 || index >= size()){
-	    throw IndexOutOfBoundsException();
+	    throw new IndexOutOfBoundsException();
 	}
 	Object object = superArray[index];
 	superArray[index] = e;
@@ -121,9 +121,9 @@ public class SuperArray{
     
     public Object remove(int index){
       	if (index < 0 || index >= size()){
-	    throw IndexOutOfBoundsException();
+	    throw new IndexOutOfBoundsException();
 	}
-	Object[] newSuperArray = new Object[superArray.length - 1];
+	Object[] newSuperArray = new Object[numElements - 1];
 	int counter = 0;
 	Object object = superArray[index];
 	while ((counter < index) && (counter < newSuperArray.length)){
@@ -134,7 +134,8 @@ public class SuperArray{
 	    newSuperArray[counter] = superArray[counter + 1];
 	    counter += 1;
 	}
-	numElements = newSuperArray.length;
+	numElements -= 1;
+	resize(numElements);
 	superArray = newSuperArray;
 	return object;
     }	
