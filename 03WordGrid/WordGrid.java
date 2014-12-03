@@ -22,7 +22,7 @@ public class WordGrid{
 
     private void clear(){
 	for (int counter = 0; counter < Grid.length; counter += 1){
-	    for (int counter2 = 0; counter2 < Grid[0].length; counter += 1){
+	    for (int counter2 = 0; counter2 < Grid[0].length; counter2 += 1){
 		Grid[counter][counter2]="_";
 	    }
 	}
@@ -150,7 +150,7 @@ public class WordGrid{
 		return false;
 	    }
 	    counter -= 1;
-	    counter += 1;
+	    counter2 += 1;
 	}
 	counter = row;
 	counter2 = col;
@@ -221,9 +221,9 @@ public class WordGrid{
 	}
     }
 
-    public String WorkBank(){
+    public String WordBank(){
 	String string = "";
-	for (int counter = 0; counter <PokemonList.size(); counter += 1){
+	for (int counter = 0; counter < PokemonList.size(); counter += 1){
 	    string += counter + 1 + ". " + PokemonList.get(counter)+" ";
 	}
 	return string;
@@ -287,7 +287,7 @@ public class WordGrid{
 	    
 	
     public void setWordSearch(){
-	File text = new File("C:/Users/Shawn Li/Desktop/words.txt");
+	File text = new File("words.txt");
 	Scanner scanner = new Scanner(System.in);
 	try {
 	scanner = new Scanner(text);
