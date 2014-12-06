@@ -109,6 +109,48 @@ public class SuperArray{
 	superArray = newSuperArray;
 	return object;
     }	
-	
+    public int find(String target){
+	int counter = 0;
+	while (counter < superArray.length){
+	    if (superArray[counter] = target){
+		break;
+	    }
+	    counter += 1;
+	}
+	if (counter = superArray.length){
+	    System.out.println("Not Found");
+	}
+	return counter;
+    }	
+    public void selectionSort(){
+	int counter = superArray.length;
+	int counter2 = 0;
+	int counter3;
+	String temp = superArray[0];
+	while (counter > 0){
+	    while (counter2 < counter){
+		if (temp.compareTo(superArray[counter2]) < 0){
+		    temp = superArray[counter2];
+		    counter3 = counter2;
+		}
+		counter2 += 1;
+	    }
+	    superArray[counter3] = superArray[counter - 1];
+	    superArray[counter - 1] = temp;
+	    counter -= 1;
+	    counter2 = 0;
+	    counter3 = 0;
+	    String temp = superArray[0];
+	}
+    }
+    public void InsertionSort{
+	OrderedSuperArray c = new OrderedSuperArray();
+        while( this.size() > 0){ 
+            c.add(this.remove(0));
+        }
+        while(c.size() > 0){
+            this.add(c.remove(0));
+        }
+    }
 }    
 	
