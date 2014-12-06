@@ -9,15 +9,20 @@ public class WordGrid{
     private ArrayList PokemonList=new ArrayList();
     private ArrayList PossiblePokemonList=new ArrayList();
     private String[][] Grid;
+    private Random rand;
 
     public WordGrid(){
-	this(10,10);
+	this(10,10,0);
     }
-    public WordGrid(int rows,int cols){
+    public WordGrid(int rows,int cols, long seed){
 	Grid=new String[rows][cols];
 	this.rows=rows;
 	this.cols=cols;
+	setSeed(seed);
 	clear();
+    }
+    public void setSeed(long seed){
+	rand = new Random(seed);
     }
 
     private void clear(){
