@@ -13,6 +13,7 @@ abstract Units:
     boolean FullPower (?)
     int Score
     default HP is 1
+    double playerVel
   
   subclass Enemy:
     int spawnX
