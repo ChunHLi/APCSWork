@@ -2,6 +2,7 @@ public abstract class Units{
 	int HP, hitboxH, hitboxL;
 	PVector position,velocity;
 	abstract void hitdetect();
+	PVector direction, velocity;
 
 	public void setHP(int newHP){
 		HP = newHP;
